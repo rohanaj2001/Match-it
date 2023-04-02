@@ -1,9 +1,4 @@
-const { json } = require('body-parser');
-const { create } = require('../models/shirtSchema');
 const { spawn } = require('child_process');
-
-const shirts = require('../models/shirtSchema')
-const pants = require('../models/pantSchema')
 
 module.exports = {
     shirtPost: async (req, res, next) => {
@@ -13,11 +8,10 @@ module.exports = {
             const pythonProcess = spawn('python', ['./python_scripts/imageProcessing.py', image]);
             pythonProcess.stdout.on('data', (data) => {
                  results = data.toString();
-                 console.log(results);
+                //  console.log(results);
             });
             pythonProcess.on('close', (code) => {
-                console.log(`child process close all stdio with code ${code}`);
-                console.log(JSON.parse(results));
+                // console.log(`child process close all stdio with code ${code}`);
                 res.status(200).send(results)
             })
         } catch (error) {

@@ -22,46 +22,6 @@ function ImageUploader() {
       alert('Please select a PNG or JPEG file');
     }
   };
-  // const handleUpload = async () => {
-  //   if (!file) {
-  //     alert('Please select a file');
-  //     return;
-  //   }
-
-  //   var requestData;
-  //   const reader = new FileReader();
-  //   reader.onload = async () => {
-  //     const base64 = reader.result;
-  //     console.log('Image:', file);
-  //     console.log('Base64:', base64);
-  //     requestData = { shirtImage: base64 };
-  //     console.log("requestData here : ",requestData);
-
-  //   };
-  //   reader.readAsDataURL(file);
-
-  //   const formData = new FormData();
-  //   formData.append('image', file);
-
-  //   setUploading(true);
-
-  //   try {
-  //     console.log("requestData : ",requestData);
-
-  //     const response = await axios.post('http://localhost:5000/shirtapi', requestData, {
-  //       headers: {
-  //         'Content-Type': 'application/x-www-form-urlencoded',
-  //       },
-  //     });
-  //     console.log('Upload response:', response);
-  //     dispatch(setResponseData(response.data));
-  //   } catch (error) {
-  //     console.error('Upload error:', error);
-  //   }
-
-  //   setUploading(false);
-  //   setFile(null);
-  // };
 
   const handleUpload = async () => {
     if (!file) {
@@ -86,7 +46,7 @@ function ImageUploader() {
     setUploading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // replace with actual axios call
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await axios.post('http://localhost:5000/shirtapi', qs.stringify(requestData), {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
