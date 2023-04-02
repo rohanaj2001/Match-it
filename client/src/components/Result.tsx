@@ -19,18 +19,15 @@ export default function Result() {
     "": "gray",
   };
 
-  function handleClick() {
-    console.log(responseData);
-
+  function handleClick() {    
     if (responseData) {
       let colorMap: { [originalColor: string]: string } = {
         "#3544A1": responseData.shirt,
         "#15171A": responseData.pant,
         "": "gray",
       };
-      console.log("nicee");
       const selectedSvgs = d3.selectAll<SVGElement, unknown>(".man");
-      console.log("Selected SVG elements:", selectedSvgs.nodes());
+      // console.log("Selected SVG elements:", selectedSvgs.nodes());
 
       // Change the fill colors of the selected SVG elements
       selectedSvgs.each(function () {
