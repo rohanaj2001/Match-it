@@ -6,7 +6,6 @@ import m1 from '../assets/man_images/man1.svg';
 import m2 from '../assets/man_images/man2.svg';
 import m3 from '../assets/man_images/man3.svg';
 import * as d3 from "d3";
-import shirt from '../assets/man_images/shirt.svg';
 import { useSelector } from "react-redux";
 import { AppState } from "../types";
 
@@ -19,13 +18,22 @@ export default function Result() {
     "": "gray",
   };
 
-  function handleClick() {    
+  function handleClick() {
     if (responseData) {
       let colorMap: { [originalColor: string]: string } = {
         "#3544A1": responseData.shirt,
         "#15171A": responseData.pant,
         "": "gray",
       };
+      const inputColor = d3.select('#inputColor');
+      inputColor
+        .style('background-color', responseData.shirt)
+        .html(`Input color : ${responseData.shirt}`);
+
+      const matchingColor = d3.select('#matchingColor');
+      matchingColor
+        .style('background-color', responseData.pant)
+        .html(`Matching color : ${responseData.pant}`);
       const selectedSvgs = d3.selectAll<SVGElement, unknown>(".man");
       // console.log("Selected SVG elements:", selectedSvgs.nodes());
 
@@ -45,7 +53,7 @@ export default function Result() {
 
 
   return (
-    <Flex justifyContent={'center'} alignItems={'center'} p={0} h={'100vh'} w={'100%'} flexDirection={'column'}>
+    <Flex justifyContent={'center'} alignItems={'center'} p={0} h={'100vh'} w={'100%'} flexDirection={'column'} backgroundColor={'#4E4E50'}>
       <section>
         <Flex alignItems={'center'} justifyContent={'space-between'} height={'60vh'} width={'50vw'} >
           <Box>
@@ -223,36 +231,51 @@ export default function Result() {
           </Box>
         </Flex>
       </section>
-      <Button colorScheme='teal' size='lg' onClick={handleClick}>
-        Render
-      </Button>
       <section>
         <Flex
           h={'auto'}
-          w={'30vw'}
+          w={'50vw'}
+          color={'#AD093E'}
           alignItems={'center'}
           justifyContent={'space-between'}>
           <Flex
-            h={'20vh'}
-            w={'20vh'}
-            bgColor={'black'}
+            h={'10vh'}
+            w={'39%'}
+            bgColor={'#1A1A1D'}
             border={'1px solid white'}
-            borderRadius={15}
+            borderRadius="25px 0px 0px 25px"
             alignItems={'center'}
             justifyContent={'center'}
+            id='inputColor'
           >
-            input
+            Input Color
           </Flex>
-          <Flex
-            h={'20vh'}
-            w={'20vh'}
-            bgColor={'black'}
+          <Button
+            height={'10vh'}
+            width={'20%'}
+            bgColor={'#1A1A1D'}
             border={'1px solid white'}
-            borderRadius={15}
+            borderRadius={0}
             alignItems={'center'}
             justifyContent={'center'}
+            _hover={{
+              boxShadow: "0px 0px 20px 1px #1D1D20"
+            }}
+            onClick={handleClick}
           >
-            output
+            Render
+          </Button>
+          <Flex
+            h={'10vh'}
+            w={'39%'}
+            bgColor={'#1A1A1D'}
+            border={'1px solid white'}
+            borderRadius="0px 25px 25px 0px"
+            alignItems={'center'}
+            justifyContent={'center'}
+            id='matchingColor'
+          >
+            Matching Color
           </Flex>
         </Flex>
       </section>

@@ -13,9 +13,18 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Image
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
+const LinkSet1 = [
+  { text: 'Home', to: 'home' },
+  { text: 'Match', to: 'matchPage' },
+];
+const LinkSet2 = [
+  { text: 'Help', to: 'home' },
+  { text: 'Contact', to: 'contact' },
+];
 const Links = [
   { text: 'Home', to: 'home' },
   { text: 'Match', to: 'matchPage' },
@@ -46,8 +55,7 @@ export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
-      <Box bg={useColorModeValue('blue.900', 'gray.900')} color='gray.50' px={4} h={'10vh'} display={'flex'} justifyContent={'center'} alignItems={'center'} position={'fixed'} w={'100vw'}>
+      <Box backgroundColor={'#1A1A1D'} color='#4E4E50' fontSize={'1.5rem'} h={'10vh'} display={'flex'} justifyContent={'center'} alignItems={'center'} position={'fixed'} w={'100vw'} zIndex={100}>
         <Flex h={16} alignItems={'center'} justifyContent={'center'}>
           <IconButton   
             size={'md'}
@@ -57,12 +65,22 @@ export default function Simple() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={'center'}>
-            <Box>matchIt</Box>
+          <HStack
+              as={'nav'}
+              spacing={4}
+              display={{ base: 'none', md: 'flex' }}>
+              {LinkSet1.map((link) => (
+                <NavLink key={link.text} to={link.to}>
+                  {link.text}
+                </NavLink>
+              ))}
+            </HStack>
+            <Box color={'#C3073F'}>Match - It</Box>
             <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
+              {LinkSet2.map((link) => (
                 <NavLink key={link.text} to={link.to}>
                   {link.text}
                 </NavLink>
@@ -92,6 +110,5 @@ export default function Simple() {
           </Box>
         ) : null}
       </Box>
-    </>
   );
 }

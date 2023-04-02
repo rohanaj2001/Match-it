@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setResponseData } from "../slice";
 import qs from 'qs';
+import '../css/style.css'
 
 function ImageUploader() {
   const [file, setFile] = useState<File | null>(null);
@@ -65,17 +66,23 @@ function ImageUploader() {
 
 
   return (
-    <Flex justifyContent="center" alignItems="center" height="100vh" id='matchPage' bgColor={'#90CDF4'}>
-      <Box
-        border={dragging ? '2px dashed green' : '2px dashed gray'}
-        borderRadius="md"
+    <Flex justifyContent="center" alignItems="center" height="100vh" id='matchPage' >
+      <Flex
+        color={'#4E4E50'}
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        bgColor={'#1A1A1D'}
+        border={dragging ? '3px dashed gray' : '3px dashed gray'}
+        borderRadius="20px"
         padding="6"
         textAlign="center"
-        maxWidth="500px"
+        maxWidth="40vw"
+        height="40vh"
         width="100%"
         transition="all 0.3s"
         _hover={{
-          boxShadow: 'lg',
+          boxShadow: "10px 10px 20px 1px #1D1D20"
         }}
         onDragEnter={() => setDragging(true)}
         onDragLeave={() => setDragging(false)}
@@ -87,15 +94,19 @@ function ImageUploader() {
         }}
       >
         {uploading ? (
-          <Spinner size="lg" />
+          <Spinner size="lg" h={'10vh'} w={'10vh'} />
         ) : (
           <>
             <Input id="fileInput" type="file" accept="image/png, image/jpeg" onChange={handleFileChange} style={{ display: 'none' }} />
             <Button
+              height={'50px'}
+              width={'200px'}
+              border={dragging ? '3px solid gray' : '3px dashed gray'}
+              borderRadius="15px"
               leftIcon={<Icon as={FaFileImage} />}
               marginBottom="4"
               variant="solid"
-              colorScheme="blue"
+              colorScheme="#1A1A1D"
               onClick={() => {
                 const fileInput = document.querySelector('#fileInput') as HTMLInputElement;
                 if (fileInput) {
@@ -123,7 +134,10 @@ function ImageUploader() {
             )}
           </>
         )}
-      </Box>
+        <Text mt={5}>
+          After uploading, click on Render button in the next page
+        </Text>
+      </Flex>
     </Flex>
   );
 }
