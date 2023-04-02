@@ -11,10 +11,8 @@ import { useSelector } from "react-redux";
 import { AppState } from "../types";
 
 export default function Result() {
-  const [color, setColor] = useState('#000000')
-  const [response, setResponse] = useState({})
+  const [color, setColor] = useState('#000000')  
   const responseData = useSelector((state: AppState) => state.data.responseData);
-
   const colorMap: { [originalColor: string]: string } = {
     "#3544A1": "green",
     "#15171A": "black",
@@ -23,6 +21,9 @@ export default function Result() {
 
 
   function handleClick() {
+    
+  console.log(responseData);
+  
     if (responseData) {
       let colorMap: { [originalColor: string]: string } = {
         "#3544A1": responseData.shirt,
@@ -32,9 +33,9 @@ export default function Result() {
     }
     const selectedSvgs = d3.selectAll<SVGElement, unknown>(".man");
     console.log("Selected SVG elements:", selectedSvgs.nodes());
-    selectedSvgs.each(function () {
-      console.log(d3.select<SVGElement, unknown>(this).attr("id"));
-    });
+    // selectedSvgs.each(function () {
+    //   console.log(d3.select<SVGElement, unknown>(this).attr("id"));
+    // });
 
     // Change the fill colors of the selected SVG elements
     selectedSvgs.each(function () {

@@ -19,7 +19,9 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     setResponseData: (state, action: PayloadAction<UpdateResponseDataPayload>) => {
-      state.data.responseData = action.payload.responseData;
+      // state.data.responseData = action.payload.responseData;
+      state.data.responseData = { shirt: "#83476a", pant: "#7cb895" };
+      
     },
   },
 });
