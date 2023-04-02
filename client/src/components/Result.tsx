@@ -258,6 +258,9 @@ export default function Result() {
             borderRadius={0}
             alignItems={'center'}
             justifyContent={'center'}
+            _hover={{
+              boxShadow: "0px 0px 20px 1px #1D1D20"
+            }}
             onClick={handleClick}
           >
             Render

@@ -32,7 +32,7 @@ export default function Contact() {
 
         <div className="direct-contact-container">
 
-          <div className="direct-contact-item">Bangalore Karnataka</div>
+          <div className="direct-contact-item">Bengaluru, Karnataka</div>
           <hr />
           <ul className="social-media-list">
             <li><a href="#" target="_blank" className="contact-icon">

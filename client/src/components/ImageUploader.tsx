@@ -94,7 +94,7 @@ function ImageUploader() {
         }}
       >
         {uploading ? (
-          <Spinner size="lg" h={'10vh'} w={'10vh'}/>
+          <Spinner size="lg" h={'10vh'} w={'10vh'} />
         ) : (
           <>
             <Input id="fileInput" type="file" accept="image/png, image/jpeg" onChange={handleFileChange} style={{ display: 'none' }} />
@@ -134,6 +134,9 @@ function ImageUploader() {
             )}
           </>
         )}
+        <Text mt={5}>
+          After uploading, click on Render button in the next page
+        </Text>
       </Flex>
     </Flex>
   );
