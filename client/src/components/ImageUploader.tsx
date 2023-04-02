@@ -92,6 +92,8 @@ function ImageUploader() {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
+      console.log(response.data);
+      console.log("sari ide")
       dispatch(setResponseData(response.data));
     } catch (error) {
       console.error('Upload error:', error);
