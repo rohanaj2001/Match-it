@@ -21,27 +21,37 @@ function ImageUploader() {
       alert('Please select a PNG or JPEG file');
     }
   };
-
   const handleUpload = async () => {
     if (!file) {
       alert('Please select a file');
       return;
     }
-
+  
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = reader.result;
+      console.log('Image:', file);
+      console.log('Base64:', base64);
+    };
+    reader.readAsDataURL(file);
+  
     const formData = new FormData();
     formData.append('image', file);
-
+  
     setUploading(true);
-
-    useEffect(() => {
-      axios.get("/api/data").then((response) => {
-        dispatch(setResponseData(response.data));
-      });
-    }, [dispatch]);
-
+  
+    try {
+      const response = await axios.post('/api/upload', formData);
+      console.log('Upload response:', response);
+      dispatch(setResponseData(response.data));
+    } catch (error) {
+      console.error('Upload error:', error);
+    }
+  
     setUploading(false);
     setFile(null);
   };
+  
 
   return (
     <Flex justifyContent="center" alignItems="center" height="100vh" id='matchPage' bgColor={'#90CDF4'}>

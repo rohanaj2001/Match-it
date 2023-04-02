@@ -1,5 +1,10 @@
 export interface AppState {
   data: {
-    responseData: any;
+    responseData: Item;
   };
+}
+
+export interface Item {
+  shirt: string;
+  pant: string;
 }
