@@ -25,6 +25,15 @@ export default function Result() {
         "#15171A": responseData.pant,
         "": "gray",
       };
+      const inputColor = d3.select('#inputColor');
+      inputColor
+        .style('background-color', responseData.shirt)
+        .html(`Input color : ${responseData.shirt}`);
+
+      const matchingColor = d3.select('#matchingColor');
+      matchingColor
+        .style('background-color', responseData.pant)
+        .html(`Matching color : ${responseData.pant}`);
       const selectedSvgs = d3.selectAll<SVGElement, unknown>(".man");
       // console.log("Selected SVG elements:", selectedSvgs.nodes());
 
@@ -237,21 +246,22 @@ export default function Result() {
             borderRadius="25px 0px 0px 25px"
             alignItems={'center'}
             justifyContent={'center'}
+            id='inputColor'
           >
             Input Color
           </Flex>
           <Button
-        height={'10vh'}
-        width={'20%'}
-        bgColor={'#1A1A1D'}
-        border={'1px solid white'}
-        borderRadius={0}
-        alignItems={'center'}
-        justifyContent={'center'}
-        onClick={handleClick}
-        >
-        Render
-      </Button>
+            height={'10vh'}
+            width={'20%'}
+            bgColor={'#1A1A1D'}
+            border={'1px solid white'}
+            borderRadius={0}
+            alignItems={'center'}
+            justifyContent={'center'}
+            onClick={handleClick}
+          >
+            Render
+          </Button>
           <Flex
             h={'10vh'}
             w={'39%'}
@@ -260,6 +270,7 @@ export default function Result() {
             borderRadius="0px 25px 25px 0px"
             alignItems={'center'}
             justifyContent={'center'}
+            id='matchingColor'
           >
             Matching Color
           </Flex>
