@@ -1,12 +1,13 @@
 import React from 'react'
-import MovingComponent from 'react-moving-text'
-import { Text } from '@chakra-ui/react'
+// import MovingComponent from 'react-moving-text'
+import { Flex, Text, background, Image, Box } from '@chakra-ui/react'
 import '../css/style.css'
+import Cube from '../assets/cube.svg'
 export default function Home() {
     return (
-        <div className='pageContainer' id='home'>
-            <div>
-                <MovingComponent
+        <Flex id='home' justifyContent={'center'} alignItems={'center'} backgroundColor={'#1A1A1D'} flexDirection={'column'} h={'100vh'} padding={0} margin={0}>
+            {/* <div>
+                <MovingComponent                
                     type="fadeInFromLeft"
                     duration="800ms"
                     delay="0s"
@@ -14,7 +15,7 @@ export default function Home() {
                     timing="ease"
                     iteration="1"
                     fillMode="none">
-                    <Text fontSize='9xl' fontWeight ='bold' color={'gray.50'}>Welcome</Text>
+                    <Text fontSize='9xl' fontWeight='bold' color={'#C3073F'}>Welcome</Text>
                 </MovingComponent>
             </div>
             <div>
@@ -26,7 +27,7 @@ export default function Home() {
                     timing="ease"
                     iteration="1"
                     fillMode="none">
-                    <Text fontSize='9xl' fontWeight ='bold' color={'gray.50'}>To</Text>
+                    <Text fontSize='9xl' fontWeight='bold' color={'#C3073F'}>To</Text>
                 </MovingComponent>
             </div>
             <div>
@@ -38,9 +39,12 @@ export default function Home() {
                     timing="ease"
                     iteration="1"
                     fillMode="none">
-                    <Text fontSize='9xl' fontWeight ='bold' color={'gray.50'}>Match-It</Text>
+                    <Text fontSize='9xl' fontWeight='bold' color={'#C3073F'}>Match-It</Text>
                 </MovingComponent>
-            </div>
-        </div>
+            </div> */}
+            <Flex boxSize='sm' justifyContent={'center'} alignItems={'center'} padding={0} margin={0}>
+                <Image src={Cube} alt='Dan Abramov' />
+            </Flex>
+        </Flex>
     )
 }
