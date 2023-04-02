@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Flex, Text, Button, Input, Icon, Spinner } from '@chakra-ui/react';
 import { FaFileImage } from 'react-icons/fa';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setResponseData } from "../slice";
 
 function ImageUploader() {
   const [file, setFile] = useState<File | null>(null);
   const [dragging, setDragging] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
@@ -29,24 +33,18 @@ function ImageUploader() {
 
     setUploading(true);
 
-    try {
-      const response = await axios.post('/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+    useEffect(() => {
+      axios.get("/api/data").then((response) => {
+        dispatch(setResponseData(response.data));
       });
-
-      console.log(response.data); // log response from server
-    } catch (error) {
-      console.log(error);
-    }
+    }, [dispatch]);
 
     setUploading(false);
     setFile(null);
   };
 
   return (
-    <Flex justifyContent="center" alignItems="center" height="90vh" id='matchPage' bgColor={'#90CDF4'}>
+    <Flex justifyContent="center" alignItems="center" height="100vh" id='matchPage' bgColor={'#90CDF4'}>
       <Box
         border={dragging ? '2px dashed green' : '2px dashed gray'}
         borderRadius="md"

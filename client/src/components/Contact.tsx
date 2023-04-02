@@ -6,9 +6,8 @@ export default function Contact() {
     <Flex
     id='contact'
     h={'90vh'}
-    w={'100vw'}
+    w={'100%'}
     bgColor={'#1A365D'}>
-
     </Flex>
   )
 }
