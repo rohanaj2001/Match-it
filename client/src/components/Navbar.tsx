@@ -19,16 +19,16 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 const LinkSet1 = [
   { text: 'Home', to: 'home' },
-  { text: 'Match', to: 'matchPage' },
+  { text: 'Upload', to: 'matchPage' },
 ];
 const LinkSet2 = [
-  { text: 'Help', to: 'home' },
+  { text: 'Matches', to: 'matches' },
   { text: 'Contact', to: 'contact' },
 ];
 const Links = [
   { text: 'Home', to: 'home' },
-  { text: 'Match', to: 'matchPage' },
-  { text: 'Help', to: 'home' },
+  { text: 'Upload', to: 'matchPage' },
+  { text: 'Matches', to: 'matches' },
   { text: 'Contact', to: 'contact' },
 ];
 

@@ -7,4 +7,6 @@ export interface AppState {
 export interface Item {
   shirt: string;
   pant: string;
+  min_extreme: string;
+  max_extreme: string;
 }

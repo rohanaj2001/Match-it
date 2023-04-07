@@ -2,6 +2,7 @@ import base64
 import sys
 import cv2
 import json
+from dominantColor import findDominantColor
 img=sys.argv[1]
 img_data=(img).split(",",1)
 with open("./shirt_images/shirtImage.png", "wb") as fh:
@@ -10,6 +11,7 @@ with open("./shirt_images/shirtImage.png", "wb") as fh:
 path = r"./shirt_images/shirtImage.png"
 img_rgb = cv2.imread(path, 1)
 x,y,q=img_rgb.shape
+
 rn,gn,bn=0,0,0
 i=0
 j=0
@@ -36,7 +38,9 @@ def rgb_to_hex(rgb):
 sHex=rgb_to_hex((rn, gn, bn))
 scHex=rgb_to_hex((rc, gc, bc))
 
-output_data = {"shirt": sHex, "pant": scHex}
+(color_hex, (min_extreme, comp_hex, max_extreme)) = findDominantColor(img_rgb)
+
+output_data = {"shirt": color_hex, "pant": comp_hex, "min_extreme": min_extreme, "max_extreme" : max_extreme}
 output_json = json.dumps(output_data)
 
 print(output_json)

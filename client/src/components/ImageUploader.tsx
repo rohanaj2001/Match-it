@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Flex, Text, Button, Input, Icon, Spinner } from '@chakra-ui/react';
-import { FaFileImage } from 'react-icons/fa';
+import { FaFileImage, FaUpload } from 'react-icons/fa';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setResponseData } from "../slice";
@@ -101,12 +101,14 @@ function ImageUploader() {
             <Button
               height={'50px'}
               width={'200px'}
-              border={dragging ? '3px solid gray' : '3px dashed gray'}
-              borderRadius="15px"
+              // border={dragging ? '3px solid gray' : '3px dashed gray'}
+              // borderRadius="15px"
               leftIcon={<Icon as={FaFileImage} />}
               marginBottom="4"
               variant="solid"
               colorScheme="#1A1A1D"
+              fontSize={'1.5rem'}
+              color={'#C3073F'}
               onClick={() => {
                 const fileInput = document.querySelector('#fileInput') as HTMLInputElement;
                 if (fileInput) {
@@ -122,19 +124,29 @@ function ImageUploader() {
                 <Text marginBottom="4">
                   Selected file: {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
                 </Text>
-                <Button onClick={handleUpload} variant="solid" colorScheme="green">
+                <Button onClick={handleUpload} variant="solid" 
+                 height={'50px'}
+                 width={'200px'}                 
+                 leftIcon={<Icon as={FaUpload} />}            
+                 colorScheme="#1A1A1D"
+                 fontSize={'1.5rem'}
+                 color={'#C3073F'}
+                >
                   Upload
                 </Button>
               </>
             )}
             {!file && (
-              <Text>
+              <Text 
+              fontSize={'1.5rem'}
+              >
                 Drag and drop an image file here, or click to select a file
               </Text>
             )}
           </>
         )}
-        <Text mt={5}>
+        <Text mt={5}
+        fontSize={'1.5rem'}>
           After uploading, click on Render button in the next page
         </Text>
       </Flex>
